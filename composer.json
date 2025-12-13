@@ -14,11 +14,11 @@
         "ext-dom": "*",
 
         "simplesamlphp/assert": "~1.9",
-        "simplesamlphp/xml-common": "~2.4",
-        "simplesamlphp/xml-soap": "~2.0"
+        "simplesamlphp/xml-common": "~2.4"
     },
     "require-dev": {
-        "simplesamlphp/simplesamlphp-test-framework": "~1.10"
+        "simplesamlphp/simplesamlphp-test-framework": "~1.10",
+        "simplesamlphp/xml-soap": "~2.0"
     },
     "autoload": {
         "psr-4": {
