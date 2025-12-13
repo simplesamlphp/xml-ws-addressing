@@ -1,0 +1,6 @@
+<wsam:Addressing xmlns:wsam="http://www.w3.org/2007/02/addressing/metadata" xmlns:ssp="urn:x-simplesamlphp:namespace" xmlns:wsp="http://www.w3.org/2006/07/ws-policy" ssp:attr1="value1">
+  <wsp:Policy Name="phpunit" ssp:attr1="value1">
+    <wsp:ExactlyOne />
+    <ssp:Chunk>Some</ssp:Chunk>
+  </wsp:Policy>
+</wsam:Addressing>
