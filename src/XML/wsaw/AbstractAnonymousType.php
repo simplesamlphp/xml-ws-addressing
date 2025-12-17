@@ -37,7 +37,6 @@ abstract class AbstractAnonymousType extends AbstractWsawElement
      * Convert this Anomymous to XML.
      *
      * @param \DOMElement|null $parent The element we should append this class to.
-     * @return \DOMElement The XML element after adding the data corresponding to this Anonymous.
      */
     public function toXML(?DOMElement $parent = null): DOMElement
     {

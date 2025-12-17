@@ -28,7 +28,7 @@ final class Anonymous extends AbstractAnonymousType implements SchemaValidatable
 
 
     /** The namespace-attribute for the xs:anyAttribute element */
-    public const XS_ANY_ATTR_NAMESPACE = NS::OTHER;
+    public const string XS_ANY_ATTR_NAMESPACE = NS::OTHER;
 
 
     /**
@@ -50,7 +50,6 @@ final class Anonymous extends AbstractAnonymousType implements SchemaValidatable
      * Create an instance of this object from its XML representation.
      *
      * @param \DOMElement $xml
-     * @return static
      *
      * @throws \SimpleSAML\XMLSchema\Exception\InvalidDOMElementException
      *   if the qualified name of the supplied element is wrong
@@ -76,7 +75,6 @@ final class Anonymous extends AbstractAnonymousType implements SchemaValidatable
      * Convert this Anonymous to XML.
      *
      * @param \DOMElement|null $parent The element we should append this class to.
-     * @return \DOMElement The XML element after adding the data corresponding to this Anonymous.
      */
     public function toXML(?DOMElement $parent = null): DOMElement
     {

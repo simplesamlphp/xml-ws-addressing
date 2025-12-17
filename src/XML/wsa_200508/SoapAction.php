@@ -15,6 +15,5 @@ final class SoapAction extends AbstractWsaElement
     use TypedTextContentTrait;
 
 
-    /** @var string */
-    public const TEXTCONTENT_TYPE = AnyURIValue::class;
+    public const string TEXTCONTENT_TYPE = AnyURIValue::class;
 }

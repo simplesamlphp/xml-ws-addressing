@@ -32,10 +32,10 @@ abstract class AbstractEndpointReferenceType extends AbstractWsaElement
 
 
     /** The namespace-attribute for the xs:any element */
-    public const XS_ANY_ELT_NAMESPACE = NS::OTHER;
+    public const string XS_ANY_ELT_NAMESPACE = NS::OTHER;
 
     /** The namespace-attribute for the xs:anyAttribute element */
-    public const XS_ANY_ATTR_NAMESPACE = NS::OTHER;
+    public const string XS_ANY_ATTR_NAMESPACE = NS::OTHER;
 
 
     /**
@@ -100,7 +100,6 @@ abstract class AbstractEndpointReferenceType extends AbstractWsaElement
      * Note: this method cannot be used when extending this class, if the constructor has a different signature.
      *
      * @param \DOMElement $xml The XML element we should load.
-     * @return static
      *
      * @throws \SimpleSAML\XMLSchema\Exception\InvalidDOMElementException
      *   if the qualified name of the supplied element is wrong
@@ -141,7 +140,6 @@ abstract class AbstractEndpointReferenceType extends AbstractWsaElement
      * Add this endpoint reference to an XML element.
      *
      * @param \DOMElement $parent The element we should append this endpoint to.
-     * @return \DOMElement
      */
     public function toXML(?DOMElement $parent = null): DOMElement
     {

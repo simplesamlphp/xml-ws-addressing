@@ -14,12 +14,9 @@ use SimpleSAML\XML\AbstractElement;
  */
 abstract class AbstractWsaElement extends AbstractElement
 {
-    /** @var string */
-    public const NS = C::NS_ADDR_200408;
+    public const string NS = C::NS_ADDR_200408;
 
-    /** @var string */
-    public const NS_PREFIX = 'wsa';
+    public const string NS_PREFIX = 'wsa';
 
-    /** @var string */
-    public const SCHEMA = 'resources/schemas/ws-addr-200408.xsd';
+    public const string SCHEMA = 'resources/schemas/ws-addr-200408.xsd';
 }

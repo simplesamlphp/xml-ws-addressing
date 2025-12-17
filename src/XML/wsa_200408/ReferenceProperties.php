@@ -21,7 +21,7 @@ final class ReferenceProperties extends AbstractWsaElement
 
 
     /** The namespace-attribute for the xs:any element */
-    public const XS_ANY_ELT_NAMESPACE = NS::ANY;
+    public const string XS_ANY_ELT_NAMESPACE = NS::ANY;
 
 
     /**
@@ -37,8 +37,6 @@ final class ReferenceProperties extends AbstractWsaElement
 
     /**
      * Test if an object, at the state it's in, would produce an empty XML-element
-     *
-     * @return bool
      */
     public function isEmptyElement(): bool
     {
@@ -50,7 +48,6 @@ final class ReferenceProperties extends AbstractWsaElement
      * Convert XML into an ReferenceProperties element
      *
      * @param \DOMElement $xml The XML element we should load
-     * @return static
      *
      * @throws \SimpleSAML\XMLSchema\Exception\InvalidDOMElementException
      *   If the qualified name of the supplied element is wrong
@@ -70,7 +67,6 @@ final class ReferenceProperties extends AbstractWsaElement
      * Convert this ReferenceProperties to XML.
      *
      * @param \DOMElement|null $parent The element we should add this ReferenceProperties to.
-     * @return \DOMElement This Header-element.
      */
     public function toXML(?DOMElement $parent = null): DOMElement
     {
