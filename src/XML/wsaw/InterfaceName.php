@@ -25,7 +25,6 @@ final class InterfaceName extends AbstractAttributedQNameType implements SchemaV
      * Create an instance of this object from its XML representation.
      *
      * @param \DOMElement $xml
-     * @return static
      *
      * @throws \SimpleSAML\XMLSchema\Exception\InvalidDOMElementException
      *   if the qualified name of the supplied element is wrong

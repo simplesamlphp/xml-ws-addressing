@@ -28,11 +28,10 @@ abstract class AbstractServiceNameType extends AbstractWsaElement
     use TypedTextContentTrait;
 
 
-    /** @var string */
-    public const TEXTCONTENT_TYPE = QNameValue::class;
+    public const string TEXTCONTENT_TYPE = QNameValue::class;
 
     /** The namespace-attribute for the xs:anyElement element */
-    public const XS_ANY_ATTR_NAMESPACE = NS::OTHER;
+    public const string XS_ANY_ATTR_NAMESPACE = NS::OTHER;
 
 
     /**
@@ -65,7 +64,6 @@ abstract class AbstractServiceNameType extends AbstractWsaElement
      * Convert XML into a class instance
      *
      * @param \DOMElement $xml The XML element we should load
-     * @return static
      *
      * @throws \SimpleSAML\XMLSchema\Exception\InvalidDOMElementException
      *   If the qualified name of the supplied element is wrong
@@ -87,7 +85,6 @@ abstract class AbstractServiceNameType extends AbstractWsaElement
      * Convert this element to XML.
      *
      * @param \DOMElement|null $parent The element we should append this element to.
-     * @return \DOMElement
      */
     public function toXML(?DOMElement $parent = null): DOMElement
     {

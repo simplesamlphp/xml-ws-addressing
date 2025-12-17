@@ -23,10 +23,9 @@ abstract class AbstractServiceNameType extends AbstractWsawElement
 
 
     /** The namespace-attribute for the xs:anyAttribute element */
-    public const XS_ANY_ATTR_NAMESPACE = NS::OTHER;
+    public const string XS_ANY_ATTR_NAMESPACE = NS::OTHER;
 
-    /** @var string */
-    public const TEXTCONTENT_TYPE = QNameValue::class;
+    public const string TEXTCONTENT_TYPE = QNameValue::class;
 
 
     /**
@@ -61,7 +60,6 @@ abstract class AbstractServiceNameType extends AbstractWsawElement
      * Convert this ServiceNameType to XML.
      *
      * @param \DOMElement|null $parent The element we should append this class to.
-     * @return \DOMElement The XML element after adding the data corresponding to this ServiceNameType.
      */
     public function toXML(?DOMElement $parent = null): DOMElement
     {

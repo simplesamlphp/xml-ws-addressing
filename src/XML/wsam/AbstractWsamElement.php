@@ -16,12 +16,9 @@ use SimpleSAML\XML\AbstractElement;
  */
 abstract class AbstractWsamElement extends AbstractElement
 {
-    /** @var string */
-    public const NS = C::NS_ADDR_METADATA;
+    public const string NS = C::NS_ADDR_METADATA;
 
-    /** @var string */
-    public const NS_PREFIX = 'wsam';
+    public const string NS_PREFIX = 'wsam';
 
-    /** @var string */
-    public const SCHEMA = 'resources/schemas/ws-addr-metadata.xsd';
+    public const string SCHEMA = 'resources/schemas/ws-addr-metadata.xsd';
 }

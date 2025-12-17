@@ -20,7 +20,7 @@ abstract class AbstractAddressing extends AbstractWsamElement
 
 
     /** The namespace-attribute for the xs:anyAttribute element */
-    public const XS_ANY_ATTR_NAMESPACE = NS::OTHER;
+    public const string XS_ANY_ATTR_NAMESPACE = NS::OTHER;
 
 
     /**
@@ -39,8 +39,6 @@ abstract class AbstractAddressing extends AbstractWsamElement
 
     /**
      * Test if an object, at the state it's in, would produce an empty XML-element
-     *
-     * @return bool
      */
     public function isEmptyElement(): bool
     {
@@ -63,7 +61,6 @@ abstract class AbstractAddressing extends AbstractWsamElement
      * Convert this Addressing to XML.
      *
      * @param \DOMElement|null $parent The element we should append this class to.
-     * @return \DOMElement The XML element after adding the data corresponding to this Addressing.
      */
     public function toXML(?DOMElement $parent = null): DOMElement
     {

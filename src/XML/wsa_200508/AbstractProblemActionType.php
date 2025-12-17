@@ -23,7 +23,7 @@ abstract class AbstractProblemActionType extends AbstractWsaElement
 
 
     /** The namespace-attribute for the xs:anyAttribute element */
-    public const XS_ANY_ATTR_NAMESPACE = NS::OTHER;
+    public const string XS_ANY_ATTR_NAMESPACE = NS::OTHER;
 
 
     /**
@@ -44,8 +44,6 @@ abstract class AbstractProblemActionType extends AbstractWsaElement
 
     /**
      * Test if an object, at the state it's in, would produce an empty XML-element
-     *
-     * @return bool
      */
     public function isEmptyElement(): bool
     {
@@ -57,7 +55,6 @@ abstract class AbstractProblemActionType extends AbstractWsaElement
      * Convert this element to XML.
      *
      * @param \DOMElement|null $parent The element we should append this element to.
-     * @return \DOMElement
      */
     public function toXML(?DOMElement $parent = null): DOMElement
     {
