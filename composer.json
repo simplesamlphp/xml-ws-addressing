@@ -14,7 +14,7 @@
         "ext-dom": "*",
 
         "simplesamlphp/assert": "~1.9",
-        "simplesamlphp/xml-common": "~2.4",
+        "simplesamlphp/xml-common": "~2.5",
         "simplesamlphp/xml-ws-policy": "~1.0",
         "simplesamlphp/xml-wss-core": "~1.0"
     },
