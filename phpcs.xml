@@ -15,10 +15,6 @@
     <rule ref="PSR12"/>
     <rule ref="vendor/simplesamlphp/simplesamlphp-test-framework/phpcs-simplesamlphp.xml"/>
 
-    <rule ref="PSR1.Files.SideEffects">
-        <exclude-pattern>src/_autoload.php</exclude-pattern>
-    </rule>
-
     <!-- Lines can be a little bit longer before they break the build -->
     <rule ref="Generic.Files.LineLength">
         <properties>
