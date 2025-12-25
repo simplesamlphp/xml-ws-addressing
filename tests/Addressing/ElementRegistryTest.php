@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SimpleSAML\Test\WebServices\Security\XML;
+namespace SimpleSAML\Test\WebServices\Security;
 
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
@@ -23,7 +23,7 @@ final class ElementRegistryTest extends TestCase
      */
     public function testElementRegistry(): void
     {
-        $elementRegistry = dirname(__FILE__, 4) . '/classes/element.registry.php';
+        $elementRegistry = dirname(__FILE__, 3) . '/classes/element.registry.php';
         $namespaces = include($elementRegistry);
 
         foreach ($namespaces as $namespaceURI => $elements) {
