@@ -41,7 +41,7 @@ final class RelatesTo extends AbstractWsaElement implements SchemaValidatableEle
      */
     public function __construct(
         AnyURIValue $content,
-        protected ?AnyURIValue $RelationshipType,
+        protected ?AnyURIValue $RelationshipType = null,
         array $namespacedAttributes = [],
     ) {
         $this->setContent($content);
