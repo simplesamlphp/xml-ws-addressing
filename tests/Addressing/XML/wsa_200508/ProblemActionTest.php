@@ -62,7 +62,7 @@ final class ProblemActionTest extends TestCase
 
         $problemAction = new ProblemAction(
             new Action(AnyURIValue::fromString('https://login.microsoftonline.com/login.srf'), [$attr1]),
-            new SoapAction(AnyURIValue::fromString('http://www.example.com/')),
+            SoapAction::fromString('http://www.example.com/'),
             [$attr1],
         );
 
