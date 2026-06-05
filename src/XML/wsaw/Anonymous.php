@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\WebServices\Addressing\XML\wsaw;
 
-use DOMElement;
+use Dom;
 use SimpleSAML\WebServices\Addressing\Assert\Assert;
 use SimpleSAML\XML\ExtendableAttributesTrait;
 use SimpleSAML\XML\SchemaValidatableElementInterface;
@@ -49,12 +49,12 @@ final class Anonymous extends AbstractAnonymousType implements SchemaValidatable
     /**
      * Create an instance of this object from its XML representation.
      *
-     * @param \DOMElement $xml
+     * @param \Dom\Element $xml
      *
      * @throws \SimpleSAML\XMLSchema\Exception\InvalidDOMElementException
      *   if the qualified name of the supplied element is wrong
      */
-    public static function fromXML(DOMElement $xml): static
+    public static function fromXML(Dom\Element $xml): static
     {
         Assert::same($xml->localName, static::getLocalName(), InvalidDOMElementException::class);
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
@@ -74,9 +74,9 @@ final class Anonymous extends AbstractAnonymousType implements SchemaValidatable
     /**
      * Convert this Anonymous to XML.
      *
-     * @param \DOMElement|null $parent The element we should append this class to.
+     * @param \Dom\Element|null $parent The element we should append this class to.
      */
-    public function toXML(?DOMElement $parent = null): DOMElement
+    public function toXML(?Dom\Element $parent = null): Dom\Element
     {
         $e = parent::toXML($parent);
 

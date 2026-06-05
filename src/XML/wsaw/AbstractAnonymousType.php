@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\WebServices\Addressing\XML\wsaw;
 
-use DOMElement;
+use Dom\Element;
 
 /**
  * Abstract class defining the Anonymous type
@@ -36,9 +36,9 @@ abstract class AbstractAnonymousType extends AbstractWsawElement
     /**
      * Convert this Anomymous to XML.
      *
-     * @param \DOMElement|null $parent The element we should append this class to.
+     * @param \Dom\Element|null $parent The element we should append this class to.
      */
-    public function toXML(?DOMElement $parent = null): DOMElement
+    public function toXML(?Dom\Element $parent = null): Dom\Element
     {
         $e = $this->instantiateParentElement($parent);
         $e->textContent = $this->getValue()->value;

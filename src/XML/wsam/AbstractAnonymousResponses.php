@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\WebServices\Addressing\XML\wsam;
 
-use DOMElement;
+use Dom;
 use SimpleSAML\XML\ExtendableAttributesTrait;
 use SimpleSAML\XMLSchema\XML\Constants\NS;
 
@@ -46,9 +46,9 @@ abstract class AbstractAnonymousResponses extends AbstractWsamElement
     /**
      * Convert this AnonymousResponses to XML.
      *
-     * @param \DOMElement|null $parent The element we should append this class to.
+     * @param \Dom\Element|null $parent The element we should append this class to.
      */
-    public function toXML(?DOMElement $parent = null): DOMElement
+    public function toXML(?Dom\Element $parent = null): Dom\Element
     {
         $e = $this->instantiateParentElement($parent);
 
