@@ -57,9 +57,10 @@ final class RelatesToTest extends TestCase
             [$domAttr],
         );
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($relatesTo),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($relatesTo);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

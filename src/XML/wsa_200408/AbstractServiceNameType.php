@@ -74,7 +74,7 @@ abstract class AbstractServiceNameType extends AbstractWsaElement
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
 
         return new static(
-            QNameValue::fromDocument($xml->textContent, $xml),
+            QNameValue::fromDocument((string)$xml->textContent, $xml),
             self::getOptionalAttribute($xml, 'PortName', NCNameValue::class, null),
             self::getAttributesNSFromXML($xml),
         );

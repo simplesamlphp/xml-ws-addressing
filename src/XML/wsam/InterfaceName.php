@@ -35,7 +35,7 @@ final class InterfaceName extends AbstractAttributedQNameType implements SchemaV
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
 
         return new static(
-            QNameValue::fromDocument($xml->textContent, $xml),
+            QNameValue::fromDocument((string)$xml->textContent, $xml),
             self::getAttributesNSFromXML($xml),
         );
     }

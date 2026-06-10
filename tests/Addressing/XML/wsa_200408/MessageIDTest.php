@@ -56,11 +56,12 @@ final class MessageIDTest extends TestCase
     public function testMarshalling(): void
     {
         $attr1 = new Attribute('urn:x-simplesamlphp:namespace', 'ssp', 'test', StringValue::fromString('value'));
-        $MessageID = new MessageID(AnyURIValue::fromString('https://login.microsoftonline.com/login.srf'), [$attr1]);
+        $messageId = new MessageID(AnyURIValue::fromString('https://login.microsoftonline.com/login.srf'), [$attr1]);
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($MessageID),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($messageId);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

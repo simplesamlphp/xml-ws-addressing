@@ -54,9 +54,10 @@ final class RetryAfterTest extends TestCase
     {
         $retryAfter = RetryAfter::fromString('30');
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($retryAfter),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($retryAfter);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

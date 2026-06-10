@@ -54,11 +54,12 @@ final class AddressTest extends TestCase
     public function testMarshalling(): void
     {
         $attr1 = new Attribute('urn:x-simplesamlphp:namespace', 'ssp', 'test', StringValue::fromString('value'));
-        $Address = new Address(AnyURIValue::fromString('https://login.microsoftonline.com/login.srf'), [$attr1]);
+        $address = new Address(AnyURIValue::fromString('https://login.microsoftonline.com/login.srf'), [$attr1]);
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($Address),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($address);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

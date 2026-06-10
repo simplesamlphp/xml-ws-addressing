@@ -36,7 +36,7 @@ final class ServiceName extends AbstractServiceNameType implements SchemaValidat
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
 
         return new static(
-            QNameValue::fromDocument($xml->textContent, $xml),
+            QNameValue::fromDocument((string)$xml->textContent, $xml),
             self::getOptionalAttribute($xml, 'EndpointName', NCNameValue::class, null),
             self::getAttributesNSFromXML($xml),
         );

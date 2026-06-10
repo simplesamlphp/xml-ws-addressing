@@ -59,14 +59,17 @@ abstract class AbstractAttributedQNameType extends AbstractWsaElement
         Assert::same($xml->localName, static::getLocalName(), InvalidDOMElementException::class);
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
 
-        return new static(QNameValue::fromDocument($xml->textContent, $xml), self::getAttributesNSFromXML($xml));
+        return new static(
+            QNameValue::fromDocument((string)$xml->textContent, $xml),
+            self::getAttributesNSFromXML($xml),
+        );
     }
 
 
     /**
      * Convert this element to XML.
      *
-     * @param \Dom\lement|null $parent The element we should append this element to.
+     * @param \Dom\Element|null $parent The element we should append this element to.
      */
     public function toXML(?Dom\Element $parent = null): Dom\Element
     {

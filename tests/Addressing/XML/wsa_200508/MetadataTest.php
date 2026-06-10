@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\Test\WebServices\Addressing\XML\wsa_200508;
 
-use DOMElement;
+use Dom;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
@@ -34,8 +34,8 @@ final class MetadataTest extends TestCase
     use SerializableElementTestTrait;
 
 
-    /** @var \DOMElement $MetadataContent */
-    private static DOMElement $metadataContent;
+    /** @var \Dom\Element $MetadataContent */
+    private static Dom\Element $metadataContent;
 
 
     /**
@@ -63,10 +63,11 @@ final class MetadataTest extends TestCase
         $metadata = new Metadata([new Chunk(self::$metadataContent)], [$domAttr]);
         $this->assertFalse($metadata->isEmptyElement());
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($metadata),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($metadata);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 
 

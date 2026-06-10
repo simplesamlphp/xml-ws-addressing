@@ -55,9 +55,10 @@ final class UsingAddressingTest extends TestCase
         $attr = new XMLAttribute(C::NAMESPACE, 'ssp', 'attr1', StringValue::fromString('value1'));
         $usingAddressing = new UsingAddressing([$attr]);
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($usingAddressing),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($usingAddressing);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

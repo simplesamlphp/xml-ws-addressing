@@ -59,7 +59,10 @@ abstract class AbstractAttributedUnsignedLongType extends AbstractWsaElement
         Assert::same($xml->localName, static::getLocalName(), InvalidDOMElementException::class);
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
 
-        return new static(UnsignedLongValue::fromString($xml->textContent), self::getAttributesNSFromXML($xml));
+        return new static(
+            UnsignedLongValue::fromString((string)$xml->textContent),
+            self::getAttributesNSFromXML($xml),
+        );
     }
 
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\Test\WebServices\Addressing\XML\wsa_200508;
 
-use DOMElement;
+use Dom;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
@@ -40,14 +40,14 @@ final class FaultToTest extends TestCase
     use SerializableElementTestTrait;
 
 
-    /** @var \DOMElement $referenceParametersContent */
-    protected static DOMElement $referenceParametersContent;
+    /** @var \Dom\Element $referenceParametersContent */
+    protected static Dom\Element $referenceParametersContent;
 
-    /** @var \DOMElement $metadataContent */
-    protected static DOMElement $metadataContent;
+    /** @var \Dom\Element $metadataContent */
+    protected static Dom\Element $metadataContent;
 
-    /** @var \DOMElement $customContent */
-    protected static DOMElement $customContent;
+    /** @var \Dom\Element $customContent */
+    protected static Dom\Element $customContent;
 
 
     /**
@@ -101,9 +101,10 @@ final class FaultToTest extends TestCase
             [$attr1],
         );
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($faultTo),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($faultTo);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

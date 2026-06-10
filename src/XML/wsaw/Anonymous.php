@@ -60,10 +60,10 @@ final class Anonymous extends AbstractAnonymousType implements SchemaValidatable
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
 
         try {
-            $anonymous = AnonymousEnum::from($xml->textContent);
+            $anonymous = AnonymousEnum::from((string)$xml->textContent);
         } catch (ValueError) {
             throw new SchemaViolationException(
-                sprintf('Unknown value \'%s\' for Anonymous element.', $xml->textContent),
+                sprintf('Unknown value \'%s\' for Anonymous element.', (string)$xml->textContent),
             );
         }
 

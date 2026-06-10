@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\WebServices\Addressing\XML\wsaw;
 
-use Dom\Element;
+use Dom;
 
 /**
  * Abstract class defining the Anonymous type

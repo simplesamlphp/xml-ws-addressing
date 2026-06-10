@@ -74,7 +74,7 @@ abstract class AbstractRelationshipType extends AbstractWsaElement
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
 
         return new static(
-            AnyURIValue::fromString($xml->textContent),
+            AnyURIValue::fromString((string)$xml->textContent),
             self::getOptionalAttribute($xml, 'RelationshipType', QNameValue::class, null),
             self::getAttributesNSFromXML($xml),
         );

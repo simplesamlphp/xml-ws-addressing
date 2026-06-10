@@ -61,9 +61,10 @@ final class ServiceNameTest extends TestCase
             [$attr1],
         );
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($serviceName),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($serviceName);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

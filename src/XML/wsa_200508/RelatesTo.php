@@ -74,7 +74,7 @@ final class RelatesTo extends AbstractWsaElement implements SchemaValidatableEle
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
 
         return new static(
-            AnyURIValue::fromString($xml->textContent),
+            AnyURIValue::fromString((string)$xml->textContent),
             self::getOptionalAttribute($xml, 'RelationshipType', AnyURIValue::class, null),
             self::getAttributesNSFromXML($xml),
         );
