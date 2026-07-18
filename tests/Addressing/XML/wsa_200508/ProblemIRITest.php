@@ -59,9 +59,10 @@ final class ProblemIRITest extends TestCase
 
         $problemIri = new ProblemIRI(AnyURIValue::fromString('https://login.microsoftonline.com/login.srf'), [$attr1]);
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($problemIri),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($problemIri);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

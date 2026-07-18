@@ -76,9 +76,10 @@ final class AddressingTest extends TestCase
             [$attr],
         );
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($addressing),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($addressing);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

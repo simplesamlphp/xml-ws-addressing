@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\Test\WebServices\Addressing\XML\wsa_200408;
 
-use DOMElement;
+use Dom;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
@@ -30,8 +30,8 @@ final class ReferenceParametersTest extends TestCase
     use SerializableElementTestTrait;
 
 
-    /** @var \DOMElement $referenceParametersContent */
-    private static DOMElement $referenceParametersContent;
+    /** @var \Dom\Element $referenceParametersContent */
+    private static Dom\Element $referenceParametersContent;
 
 
     /**
@@ -57,10 +57,11 @@ final class ReferenceParametersTest extends TestCase
         $referenceParameters = new ReferenceParameters([new Chunk(self::$referenceParametersContent)]);
         $this->assertFalse($referenceParameters->isEmptyElement());
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($referenceParameters),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($referenceParameters);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 
 

@@ -59,9 +59,10 @@ final class AnonymousResponsesTest extends TestCase
             [$attr],
         );
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($anonymousResponses),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($anonymousResponses);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

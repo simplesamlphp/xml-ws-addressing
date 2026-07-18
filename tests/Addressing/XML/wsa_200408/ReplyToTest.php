@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\Test\WebServices\Addressing\XML\wsa_200408;
 
-use DOMElement;
+use Dom;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
@@ -45,14 +45,14 @@ final class ReplyToTest extends TestCase
     use SerializableElementTestTrait;
 
 
-    /** @var \DOMElement $referencePropertiesContent */
-    protected static DOMElement $referencePropertiesContent;
+    /** @var \Dom\Element $referencePropertiesContent */
+    protected static Dom\Element $referencePropertiesContent;
 
-    /** @var \DOMElement $referenceParametersContent */
-    protected static DOMElement $referenceParametersContent;
+    /** @var \Dom\Element $referenceParametersContent */
+    protected static Dom\Element $referenceParametersContent;
 
-    /** @var \DOMElement $customContent */
-    protected static DOMElement $customContent;
+    /** @var \Dom\Element $customContent */
+    protected static Dom\Element $customContent;
 
 
     /**
@@ -113,10 +113,11 @@ final class ReplyToTest extends TestCase
             [$attr1],
         );
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($replyTo),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($replyTo);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 
 
@@ -158,7 +159,7 @@ final class ReplyToTest extends TestCase
         $this->assertCount(1, $replyToElements);
 
         // Test ordering of ReplyTo contents
-        /** @var \DOMElement[] $replyToElements */
+        /** @var \Dom\Element[] $replyToElements */
         $replyToElements = XPath::xpQuery($replyToElement, './wsa:Address/following-sibling::*', $xpCache);
 
         $this->assertCount(5, $replyToElements);

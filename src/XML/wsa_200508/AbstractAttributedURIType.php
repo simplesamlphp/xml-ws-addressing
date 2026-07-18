@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\WebServices\Addressing\XML\wsa_200508;
 
-use DOMElement;
+use Dom;
 use SimpleSAML\WebServices\Addressing\Assert\Assert;
 use SimpleSAML\XML\ExtendableAttributesTrait;
 use SimpleSAML\XML\TypedTextContentTrait;
@@ -49,26 +49,29 @@ abstract class AbstractAttributedURIType extends AbstractWsaElement
     /**
      * Convert XML into a class instance
      *
-     * @param \DOMElement $xml The XML element we should load
+     * @param \Dom\Element $xml The XML element we should load
      *
      * @throws \SimpleSAML\XMLSchema\Exception\InvalidDOMElementException
      *   If the qualified name of the supplied element is wrong
      */
-    public static function fromXML(DOMElement $xml): static
+    public static function fromXML(Dom\Element $xml): static
     {
         Assert::same($xml->localName, static::getLocalName(), InvalidDOMElementException::class);
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
 
-        return new static(AnyURIValue::fromString($xml->textContent), self::getAttributesNSFromXML($xml));
+        return new static(
+            AnyURIValue::fromString((string)$xml->textContent),
+            self::getAttributesNSFromXML($xml),
+        );
     }
 
 
     /**
      * Convert this element to XML.
      *
-     * @param \DOMElement|null $parent The element we should append this element to.
+     * @param \Dom\Element|null $parent The element we should append this element to.
      */
-    public function toXML(?DOMElement $parent = null): DOMElement
+    public function toXML(?Dom\Element $parent = null): Dom\Element
     {
         $e = $this->instantiateParentElement($parent);
         $e->textContent = $this->getContent()->getValue();

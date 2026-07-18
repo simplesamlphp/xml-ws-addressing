@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\WebServices\Addressing\XML\wsa_200508;
 
-use DOMElement;
+use Dom;
 use SimpleSAML\WebServices\Addressing\Assert\Assert;
 use SimpleSAML\XML\ExtendableAttributesTrait;
 use SimpleSAML\XML\SchemaValidatableElementInterface;
@@ -63,18 +63,18 @@ final class RelatesTo extends AbstractWsaElement implements SchemaValidatableEle
     /*
      * Convert XML into an RelatesTo element
      *
-     * @param \DOMElement $xml The XML element we should load
+     * @param \Dom\Element $xml The XML element we should load
      *
      * @throws \SimpleSAML\XMLSchema\Exception\InvalidDOMElementException
      *   If the qualified name of the supplied element is wrong
      */
-    public static function fromXML(DOMElement $xml): static
+    public static function fromXML(Dom\Element $xml): static
     {
         Assert::same($xml->localName, static::getLocalName(), InvalidDOMElementException::class);
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
 
         return new static(
-            AnyURIValue::fromString($xml->textContent),
+            AnyURIValue::fromString((string)$xml->textContent),
             self::getOptionalAttribute($xml, 'RelationshipType', AnyURIValue::class, null),
             self::getAttributesNSFromXML($xml),
         );
@@ -84,9 +84,9 @@ final class RelatesTo extends AbstractWsaElement implements SchemaValidatableEle
     /**
      * Convert this RelatesTo to XML.
      *
-     * @param \DOMElement|null $parent The element we should add this RelatesTo to.
+     * @param \Dom\Element|null $parent The element we should add this RelatesTo to.
      */
-    public function toXML(?DOMElement $parent = null): DOMElement
+    public function toXML(?Dom\Element $parent = null): Dom\Element
     {
         $e = $this->instantiateParentElement($parent);
         $e->textContent = $this->getContent()->getValue();

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\WebServices\Addressing\XML\wsaw;
 
-use DOMElement;
+use Dom;
 use SimpleSAML\WebServices\Addressing\Assert\Assert;
 use SimpleSAML\XML\SchemaValidatableElementInterface;
 use SimpleSAML\XML\SchemaValidatableElementTrait;
@@ -25,18 +25,18 @@ final class ServiceName extends AbstractServiceNameType implements SchemaValidat
     /**
      * Create an instance of this object from its XML representation.
      *
-     * @param \DOMElement $xml
+     * @param \Dom\Element $xml
      *
      * @throws \SimpleSAML\XMLSchema\Exception\InvalidDOMElementException
      *   if the qualified name of the supplied element is wrong
      */
-    public static function fromXML(DOMElement $xml): static
+    public static function fromXML(Dom\Element $xml): static
     {
         Assert::same($xml->localName, static::getLocalName(), InvalidDOMElementException::class);
         Assert::same($xml->namespaceURI, static::NS, InvalidDOMElementException::class);
 
         return new static(
-            QNameValue::fromDocument($xml->textContent, $xml),
+            QNameValue::fromDocument((string) $xml->textContent, $xml),
             self::getOptionalAttribute($xml, 'EndpointName', NCNameValue::class, null),
             self::getAttributesNSFromXML($xml),
         );

@@ -59,9 +59,10 @@ final class AnonymousTest extends TestCase
         $attr = new XMLAttribute(C::NAMESPACE, 'ssp', 'attr1', StringValue::fromString('value1'));
         $anonymous = new Anonymous(AnonymousEnum::Prohibited, [$attr]);
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($anonymous),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($anonymous);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

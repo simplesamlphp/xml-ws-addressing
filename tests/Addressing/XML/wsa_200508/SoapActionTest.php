@@ -51,9 +51,10 @@ final class SoapActionTest extends TestCase
     {
         $soapAction = new SoapAction(AnyURIValue::fromString('http://www.example.com/'));
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($soapAction),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($soapAction);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

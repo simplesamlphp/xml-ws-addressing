@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SimpleSAML\WebServices\Addressing\XML\wsa_200408;
 
-use DOMElement;
+use Dom;
 use SimpleSAML\WebServices\Addressing\Assert\Assert;
 use SimpleSAML\XML\ExtendableAttributesTrait;
 use SimpleSAML\XML\ExtendableElementTrait;
@@ -125,14 +125,14 @@ abstract class AbstractEndpointReferenceType extends AbstractWsaElement
      *
      * Note: this method cannot be used when extending this class, if the constructor has a different signature.
      *
-     * @param \DOMElement $xml The XML element we should load.
+     * @param \Dom\Element $xml The XML element we should load.
      *
      * @throws \SimpleSAML\XMLSchema\Exception\InvalidDOMElementException
      *   if the qualified name of the supplied element is wrong
      * @throws \SimpleSAML\XMLSchema\Exception\MissingAttributeException
      *   if the supplied element is missing any of the mandatory attributes
      */
-    public static function fromXML(DOMElement $xml): static
+    public static function fromXML(Dom\Element $xml): static
     {
         $qualifiedName = static::getClassName(static::class);
         Assert::eq(
@@ -173,9 +173,9 @@ abstract class AbstractEndpointReferenceType extends AbstractWsaElement
     /**
      * Add this endpoint reference to an XML element.
      *
-     * @param \DOMElement|null $parent The element we should append this endpoint to.
+     * @param \Dom\Element|null $parent The element we should append this endpoint to.
      */
-    public function toXML(?DOMElement $parent = null): DOMElement
+    public function toXML(?Dom\Element $parent = null): Dom\Element
     {
         $e = parent::instantiateParentElement($parent);
 

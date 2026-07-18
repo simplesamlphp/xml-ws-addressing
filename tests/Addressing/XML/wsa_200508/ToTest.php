@@ -59,9 +59,10 @@ final class ToTest extends TestCase
 
         $to = new To(AnyURIValue::fromString('https://login.microsoftonline.com/login.srf'), [$attr]);
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($to),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($to);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }

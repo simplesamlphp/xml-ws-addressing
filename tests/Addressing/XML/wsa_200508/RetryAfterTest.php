@@ -58,9 +58,10 @@ final class RetryAfterTest extends TestCase
         $attr = new Attribute('urn:x-simplesamlphp:namespace', 'ssp', 'test', StringValue::fromString('value'));
         $retryAfter = new RetryAfter(UnsignedLongValue::fromString('1234567890'), [$attr]);
 
-        $this->assertEquals(
-            self::$xmlRepresentation->saveXML(self::$xmlRepresentation->documentElement),
-            strval($retryAfter),
-        );
+        $expectedXml = self::$xmlRepresentation->saveXml(self::$xmlRepresentation->documentElement);
+        $this->assertNotFalse($expectedXml);
+        $actualXml = strval($retryAfter);
+
+        $this->assertXmlStringEqualsXmlString($expectedXml, $actualXml);
     }
 }
